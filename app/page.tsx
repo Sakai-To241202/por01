@@ -44,7 +44,7 @@ export default function Home() {
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url('/sky-background.jpg')`,
+                  backgroundImage: `url('/sky01.svg')`,
                   backgroundPosition: `${-piece.col * 100}% ${-piece.row * 100}%`,
                   filter: isLoaded ? 'none' : 'blur(10px)',
                   transition: 'filter 1.5s ease-out'
