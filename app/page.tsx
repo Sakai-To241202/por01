@@ -65,13 +65,52 @@ export default function Home() {
         </AnimatePresence>
       </div>
 
+      {/* 上から下にボタンのアイコンが押されるアニメーション */}
+      <motion.div
+        className="absolute bottom-32 left-1/3 transform flex flex-col items-center cursor-pointer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: [10, 20, 10] }} // 上下に動くアニメーション
+        transition={{
+          duration: 2, // 点滅速度をゆっくりに調整
+          delay: 2.5, // ロゴ表示タイミングに合わせる
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <motion.div
+          className="w-12 h-12 flex justify-center items-center bg-white rounded-full shadow-lg"
+          whileHover={{ scale: 1.1 }} // ホバー時に少し大きくなる
+        >
+          <motion.div
+            className="w-6 h-6 border-t-2 border-l-2 border-white rotate-45" // 上から下に矢印が動くように
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1, // 上下の動きをゆっくりに
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
+        {/* 「→」の矢印追加 */}
+        <motion.div
+          className="mt-2 text-white text-2xl"
+          animate={{ x: [0, 10, 0] }} // 矢印を右左に動かす
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          →
+        </motion.div>
+      </motion.div>
 
-  <a href="https://asase.sakura.ne.jp/">
-        {/* ロゴ追加 */}
+      {/* ロゴ */}
+      <a href="https://asase.sakura.ne.jp/" className="cursor-pointer">
         <motion.img
           src="/logo.svg"
           alt="Logo"
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          className="absolute bottom-10 left-1/3 transform w-1/2 translate-x-[5vw]" // ロゴを右に5vw移動
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -80,7 +119,7 @@ export default function Home() {
             ease: [0.23, 1, 0.32, 1],
           }}
         />
-  </a>
+      </a>
     </div>
   );
 }
